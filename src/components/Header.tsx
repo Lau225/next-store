@@ -3,7 +3,7 @@ import React from 'react'
 import { Separator } from './ui/separator'
 import { MenuList, Title } from '@/lib/constants'
 
-export default async function Header() {
+export default function Header() {
   return (
     <div className='h-16 px-10 border-b bg-white'>
       <div className="container flex items-center justify-between h-full">
@@ -14,10 +14,10 @@ export default async function Header() {
         {
           MenuList.map((item,index) => {
             return (
-              <>
+              <React.Fragment key={index}>
                 { index!==0 && <Separator orientation='vertical' />}
-                <Link key={index} href={item.href}>{item.label}</Link>
-              </>
+                <Link href={item.href}>{item.label}</Link>
+              </React.Fragment>
             )
           })
         }
