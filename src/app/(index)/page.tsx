@@ -1,10 +1,14 @@
 import React from 'react'
 import Sort from '@/components/Sort'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
-export default function page() {
+import Product from '@/components/Product'
+import { productionsAction } from '@/actions/product'
+export default async function page() {
+  const result = await productionsAction()
+  const production = result.data
   return (
     <div className='container flex py-6'>
       <Sort />
+      <Product data={production}/>
     </div>
   )
 }
