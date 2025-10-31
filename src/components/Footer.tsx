@@ -9,7 +9,7 @@ export default function Footer() {
             <h2 className='text-2xl'>
                 <Link href='/'>{Title}</Link>
             </h2>
-            <div className='grid-cols-3 gap-10 grid'>
+            <div className='flex gap-10'>
                 <div>
                     <span>Categories</span>
                     <ul className='m-4 space-y-3'>
