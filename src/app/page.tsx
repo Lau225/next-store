@@ -2,7 +2,7 @@ export default function page() {
 
   return (
     <div>
-      hello
+      部署成功
     </div>
   )
 }
