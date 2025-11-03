@@ -1,9 +1,11 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import { Separator } from './ui/separator'
 import { MenuList, Title } from '@/lib/constants'
-
+import { useCartStore } from '@/store'
 export default function Header() {
+  const store:any = useCartStore()
   return (
     <div className='h-16 px-10 border-b bg-white'>
       <div className="container flex items-center justify-between h-full">
@@ -21,6 +23,7 @@ export default function Header() {
             )
           })
         }
+        { store.cartList.length ? '（'+ store.cartList.length + '）' : '' }
         </div>
       </div>
     </div>

@@ -1,3 +1,3 @@
 import { useSortStore } from "./sortStore";
-
-export{ useSortStore }
+import { useCartStore } from "./cartStore";
+export{ useSortStore, useCartStore };

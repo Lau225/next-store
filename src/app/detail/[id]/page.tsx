@@ -7,7 +7,7 @@ export async function generateStaticParams(){
     return result.data.map((item:any) => ({id:item.id.toString()}))
 }
 export default async function page({params} : {params: Promise<any>}) {
-  const {id} = params as any
+  const {id} = await params as any
   const res = await productAction(Number(id))
   const product = res.data
   return (
