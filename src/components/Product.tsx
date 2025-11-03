@@ -3,9 +3,11 @@ import { Product as P } from '@/lib/global'
 import Image from 'next/image'
 import React from 'react'
 import { useSortStore } from '@/store'
+import { useRouter } from 'next/navigation'
 export default function Product({ data }: { data: P[] }) {
     const products = [...data]
     const { value } = useSortStore()
+    const router = useRouter()
     if(value !== 'latest'){
         products.sort((a,b)=>{
             if(value ==='low'){
@@ -15,6 +17,9 @@ export default function Product({ data }: { data: P[] }) {
             }
         })
     }
+    const handleClick = (id: number) => {
+        router.push(`/detail/${id}`)
+    }
     return (
         <div className='flex-1'>
             <h2 className='mb-8 text-4xl'>All Production</h2>
@@ -22,7 +27,7 @@ export default function Product({ data }: { data: P[] }) {
                 {
                     products.map((item, index) => {
                         return (
-                            <div key={index} className='bg-slate-50 p-4 rounded-lg shadow-md hover:bg-slate-200
+                            <div onClick={() => handleClick(item.id)} key={index} className='bg-slate-50 p-4 rounded-lg shadow-md hover:bg-slate-200
                             transition duration-300 ease-in-out cursor-pointer'>
                                 <Image src={item.image} alt={item.description} width={300} height={300} priority />
                                 <div className='flex items-center justify-between mt-4'>

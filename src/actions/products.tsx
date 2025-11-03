@@ -9,3 +9,13 @@ export async function productionsAction():Promise<responseProduct> {
         data:res
     }
 }
+
+export async function productAction(id:number){
+    const res = await db.query(`SELECT * FROM products WHERE id = ${id}`)
+    return {
+        code:200,
+        body:'get product success',
+        data:res[0]
+
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Sort from '@/components/Sort'
 import Product from '@/components/Product'
-import { productionsAction } from '@/actions/product'
+import { productionsAction } from '@/actions/products'
 export default async function page() {
   const result = await productionsAction()
   const production = result.data
