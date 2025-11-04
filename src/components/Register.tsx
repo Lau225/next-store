@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form'
 import { registerAccount } from '@/actions/user'
+import { useRouter } from 'next/navigation'
 const formSchema = z.object({
   email: z.string().min(2, {
     message: "eamil must be at least 2 characters.",
@@ -34,12 +35,14 @@ export default function Login({setNotAccountType}:{setNotAccountType:Dispatch<Se
       name:''
     },
   })
+  const router = useRouter()
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values)
     const res = await registerAccount(values.email,values.name,values.password)
     if(res.status === 'error'){
-      alert(res.message)  
+      return alert(res.message)  
     }
+    setNotAccountType('login')
   }
   return (
     <div className='container2 my-20'>

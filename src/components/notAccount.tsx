@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Register from './Register'
 import Login from './Login'
 export default function notAccount() {
-    const [notAccountType,setNotAccountType] = useState()
+    const [notAccountType,setNotAccountType] = useState('login')
   return (
     <div>
       {notAccountType === 'login' ? <Login setNotAccountType={setNotAccountType}></Login> : <Register setNotAccountType={setNotAccountType}></Register>}

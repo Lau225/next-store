@@ -1,13 +1,14 @@
-'use client'
-import Login from '@/components/Login'
-import Register from '@/components/Register'
-import React, { useState } from 'react'
+import NotAccount from "@/components/notAccount";
+import Account from "@/components/Account";
+import { authAction } from "@/actions/user";
 
-export default function page() {
-   const [notAccountType,setNotAccountType] = useState('register')
-    return (
-      <div>
-        {notAccountType === 'login' ? <Login setNotAccountType={setNotAccountType}></Login> : <Register setNotAccountType={setNotAccountType}></Register>}
-      </div>
-    )
+export default async function page(){
+  const auth:any = await authAction()
+  console.log(auth);
+  
+  return (
+    <>
+      {auth.status === 'success' ? <Account authData={auth.data}/> : <NotAccount />}
+    </>
+  )
 }
